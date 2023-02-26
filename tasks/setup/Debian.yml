@@ -1,0 +1,15 @@
+---
+- name: Add repository for nginx
+  apt_repository:
+    ppa: ppa:mysteriumnetwork/node
+    filename: myst-node
+  notify:
+    - Update APT cache
+
+- name: Force handlers
+  meta: flush_handlers
+
+- name: Install myst package
+  apt:
+    name: myst
+    state: present
