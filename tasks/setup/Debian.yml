@@ -1,7 +1,7 @@
 ---
-- name: Add repository for nginx
-  apt_repository:
-    ppa: ppa:mysteriumnetwork/node
+- name: Add mysteriumnetwork PPA
+  ansible.builtin.apt_repository:
+    repo: ppa:mysteriumnetwork/node
     filename: myst-node
   notify:
     - Update APT cache
@@ -10,6 +10,6 @@
   meta: flush_handlers
 
 - name: Install myst package
-  apt:
+  ansible.builtin.apt:
     name: myst
     state: present
